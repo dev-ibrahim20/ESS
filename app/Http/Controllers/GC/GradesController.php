@@ -48,7 +48,7 @@ class GradesController extends Controller
             $data = $request->all();
             $grade = Grades::findOrFail($id);
             $grade->update($data);
-            return redirect()->route('grades.index')->with('success', 'تم تحديث الصف بنجاح ✅');
+            return redirect()->route('GC.grades.index')->with('success', 'تم تحديث الصف بنجاح ✅');
         } 
         catch (\Exception $e) {
             return back()->with('error', 'حدث خطأ: ' . $e->getMessage())

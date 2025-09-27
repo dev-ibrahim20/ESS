@@ -7,6 +7,7 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Models\ESS\Classrooms;
 use App\Models\ESS\Grades;
 use App\Models\ESS\Students;
+use DB;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -18,8 +19,8 @@ class StudentsController extends Controller
     }
     public function create()
     {
-        $grades = Grades::all();
         $classrooms = Classrooms::all();
+        $grades = Grades::all();
         return view('students.create', compact('classrooms', 'grades'));
     }
 
@@ -50,11 +51,9 @@ class StudentsController extends Controller
                         ->withInput();
         }
     }
-    public function edit($id)
+    public function edit($id, Grades $grades, Classrooms $classrooms)
     {
         $student = Students::findOrFail($id);
-        $grades = Grades::all();
-        $classrooms = Classrooms::all();
         return view('students.edit', compact('student', 'classrooms', 'grades'));
     }
     public function update(Request $request, $id)

@@ -16,6 +16,12 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="w-full mx-auto">
                         <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+                            @if(session('success'))
+                            <div id="success-message" 
+                                class="mb-4 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow">
+                                {{ session('success') }}
+                            </div>
+                            @endif
                             <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                                 <h2 class="text-xl font-bold text-gray-800 dark:text-white">قائمة الفصول الدراسية</h2>
                                 <a href="{{ route('GC.classrooms.create')}}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
@@ -115,5 +121,17 @@
         </div>
     </div>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                setTimeout(() => {
+                    successMessage.style.transition = "opacity 0.5s ease";
+                    successMessage.style.opacity = 0;
+                    setTimeout(() => successMessage.remove(), 500);
+                }, 3000); // 3 ثواني
+            }
+        });
+    </script>
 
 </x-app-layout>
