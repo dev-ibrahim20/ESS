@@ -51,8 +51,10 @@ class StudentsController extends Controller
                         ->withInput();
         }
     }
-    public function edit($id, Grades $grades, Classrooms $classrooms)
+    public function edit($id)
     {
+        $classrooms = Classrooms::all();
+        $grades = Grades::all();
         $student = Students::findOrFail($id);
         return view('students.edit', compact('student', 'classrooms', 'grades'));
     }

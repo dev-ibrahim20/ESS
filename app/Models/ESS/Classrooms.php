@@ -18,4 +18,8 @@ class Classrooms extends Model
     {
         return $this->belongsTo(Grades::class);
     }
+    public function teacher()
+    {
+        return $this->belongsTo(Teachers::class);
+    }
 }

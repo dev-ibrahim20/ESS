@@ -18,6 +18,10 @@ class Grades extends Model
     }
     public function classrooms()
     {
-        return $this->hasMany(Classrooms::class);
+        return $this->hasManyThrough(Classrooms::class, Student_Subject::class);
+    }
+    public function teachers()
+    {
+        return $this->hasManyThrough(Teachers::class, Student_Subject::class);
     }
 }

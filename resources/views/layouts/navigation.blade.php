@@ -25,6 +25,9 @@
                         <x-nav-link :href="route('GC.index')" :active="request()->routeIs('GC.*')">
                             {{ __(' الصفوف / الفصول') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('teachers.index')" :active="request()->routeIs('teachers.*')">
+                            {{ __(' المدرسين') }}
+                        </x-nav-link>
                     </div>
                 </div>
 

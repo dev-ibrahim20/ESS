@@ -6,6 +6,7 @@ use App\Http\Controllers\GC\ClassroomsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Students\studentsController;
+use App\Http\Controllers\Teachers\TeachersController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -31,6 +32,16 @@ Route::prefix('students')->middleware('auth')->group(function () {
     Route::get('/edit/{id}', [StudentsController::class, 'edit'])->name('students.edit');
     Route::put('/update/{id}', [StudentsController::class, 'update'])->name('students.update');
     Route::delete('/destroy/{id}', [StudentsController::class, 'destroy'])->name('students.destroy');
+});
+
+Route::prefix('teachers')->middleware('auth')->group(function () {
+    Route::get('/', [TeachersController::class, 'index'])->name('teachers.index');
+    Route::get('/create', [TeachersController::class, 'create'])->name('teachers.create');
+    Route::post('/store', [TeachersController::class, 'store'])->name('teachers.store');
+    Route::get('/edit/{id}', [TeachersController::class, 'edit'])->name('teachers.edit');
+    Route::put('/update/{id}', [TeachersController::class, 'update'])->name('teachers.update');
+    Route::delete('/destroy/{id}', [TeachersController::class, 'destroy'])->name('teachers.destroy');
+    Route::get('/show', [TeachersController::class, 'show'])->name('teachers.show');
 });
 
 Route::prefix('GC')->name('GC.')->middleware('auth')->group(function () {

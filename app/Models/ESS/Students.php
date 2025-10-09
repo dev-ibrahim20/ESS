@@ -34,4 +34,19 @@ class Students extends Model
     {
         return $this->belongsTo(Classrooms::class);
     }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getEmailAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getPhoneAttribute($value)
+    {
+        return '+20 ' . $value;
+    }
 }
